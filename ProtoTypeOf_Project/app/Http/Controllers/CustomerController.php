@@ -28,4 +28,8 @@ class CustomerController extends Controller
 
         ];
     }
+
+    public function pieChart(){
+        return view('Customer.pieChartSubscription')->with('Standerd',5)->with('Premium',5);
+    }
 }

@@ -12,6 +12,7 @@
      
 
 	<form method="post">
+          <p>{{$msg}}</p>
           <input placeholder="ID" name="ID"/>
           <input type="submit"  name="create" value="Create" action class="btn btn-primary"/>
           <a href=""></a>

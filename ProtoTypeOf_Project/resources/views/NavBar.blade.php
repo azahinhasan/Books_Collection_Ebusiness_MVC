@@ -25,6 +25,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/user/subscription">Subscription </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/subscription/pieChart">Pie Chart </a>
+          </li>
         </ul>
 </body>
 </html>

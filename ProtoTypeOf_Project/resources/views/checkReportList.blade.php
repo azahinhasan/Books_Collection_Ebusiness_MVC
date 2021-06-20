@@ -12,6 +12,8 @@
      <h3> Report List </h3>
 
 	<form method="post">
+     <input placeholder="ID/Email"/>
+     <button type="button" class="btn btn-info">SEARCH</button>
      <table class="table">
           <tr>
                <th>GotRepotedID</th>

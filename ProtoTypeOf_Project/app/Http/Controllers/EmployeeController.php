@@ -16,7 +16,7 @@ class EmployeeController extends Controller
                 //return view('Employee.printCreatedUser');
                 //$this->createSucessPrint();
                 //return redirect()->route('Employee.printCreatedUser');
-               return redirect('/emplpyee/print')->with('print',true);
+                return redirect('/emplpyee/print')->with('print',true);
               // return view('Employee.regEmployee')->with('print',true);
         
         }
@@ -33,12 +33,11 @@ class EmployeeController extends Controller
                 $pdf = PDF :: loadView('Employee.printCreatedUser');
                 return $pdf->download('disney.pdf');
                 // return view('Employee.printCreatedUser');
-         
-         }
+        
+        }
 
         public function edit(){
-
-                return view('Employee.empolyeeEdit');
+                return view('Employee.empolyeeEdit')->with('msg','');
         }
 
 
@@ -46,13 +45,16 @@ class EmployeeController extends Controller
         public function editPage(Request $r){
                 $temp = $this->getUserInfo();
                 $usersInfo='';
-                $msg='';
+
 
                 foreach($temp as $u){
                 if($u['id'] == $r->ID){
                         $usersInfo = $u;
                         break;
-                        }
+                }
+                }
+                if($usersInfo==''){
+                        return view('Employee.empolyeeEdit')->with('msg','Data Not Found');
                 }
                 return view('Employee.employeeEditPage')->with('usersInfo', $usersInfo);
                 
