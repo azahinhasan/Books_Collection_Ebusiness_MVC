@@ -12,30 +12,37 @@
 <form method="post">
 		@csrf
 	<table class="table">
+		<h3>Welcome!</h3>
+		@foreach ($usersInfo as $usersInfo)
+			<tr>
+				<td style="font-weight: bolder;">Name</td>
+				<td style="font-weight: bolder;">{{$usersInfo['Name']}}</td>
+			</tr>
+			<tr>
+				<td style="font-weight: bolder;">Password</td>
+				<td style="font-weight: bolder;">{{$usersInfo['Password']}}</td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td>{{$usersInfo['Address']}}</td>
+			</tr>
+			<tr>
+				<td>DOB</td>
+				<td>{{$usersInfo['DOB']}}</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td>{{$usersInfo['Email']}}</td>
+			</tr>
 		<tr>
-			<td>Name</td>
-			<td>None</td>
+				<td>Rank</td>
+				<td>{{$usersInfo['Rank']}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" name="create" value="PRINT"></td>
 		</tr>
-      <tr>
-			<td>Password</td>
-         <td>None</td>
-		</tr>
-		<tr>
-			<td>Address</td>
-         <td>None</td>
-		</tr>
-     <tr>
-			<td>DOB</td>
-			<td>None</td>
-		</tr>
-     <tr>
-			<td>Rank</td>
-			<td>None</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="submit" name="create" value="PRINT"></td>
-		</tr>
+		@endforeach
 	</table>
 	</form>
 </body>

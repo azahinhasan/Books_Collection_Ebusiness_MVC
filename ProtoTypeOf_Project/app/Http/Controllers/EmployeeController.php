@@ -9,60 +9,70 @@ class EmployeeController extends Controller
 {
      //regEmployee
         public function create(){
-        return view('Employee.regEmployee')->with('print',false);;
+        
+
+        return view('Employee.regEmployee')->with('print',false)->with('msg','');
 
         }
 
-        public function createSucess(){
-                //return view('Employee.printCreatedUser');
-                //$this->createSucessPrint();
-                //return redirect()->route('Employee.printCreatedUser');
-                return redirect('/emplpyee/print')->with('print',true);
-              // return view('Employee.regEmployee')->with('print',true);
+        public function createSucess(Request $req){
+
+                $temp = DB::table('users')
+                ->where('Email', $req->Email )
+                ->get();
+
+             //  dd($temp);
+//
+                if(count($temp)>0){
+                        return view('Employee.regEmployee')->with('print',false)->with('msg','Email Aready Taken');
+                }
+
+               $data= DB::table('users')->insert(
+                        ['Email' => $req->Email,
+                        'Address' => $req->Address,
+                        'Name' => $req->Name,
+                        'DOB' => $req->DOB,
+                        'Password' => 'p',
+                        'Rank' => $req->Rank]);
+
+                if( $data== true){
+                        $temp = DB::table('users')
+                        ->where('Email', $req->Email )
+                        ->first();
+
+                        return redirect('/emplpyee/print/'.$temp->ID)->with('print',true);
+                }
+
+                return view('Employee.regEmployee')->with('print',false)->with('msg','Reg failed!');
         
         }
-        public function createSucessPage(){
-               // $pdf = PDF::loadView('Employee.printCreatedUser');
-        
-                // $pdf = PDF :: loadView('Employee.printCreatedUser');
-                // return $pdf->download('disney.pdf');
-                return view('Employee.printCreatedUser');
-        
-        }
-        public function createSucessPrint(){
+        public function createSucessPage($id){
 
-                // $pdf = PDF :: loadView('Employee.printCreatedUser');
-                // return $pdf->download('disney.pdf');
+                $temp = DB::table('users')
+                ->where('ID',$id )
+                ->get();
+                $result = json_decode($temp, true);
 
+               return view('Employee.printCreatedUser')->with('usersInfo', $result);
+            
 
-                // return view('Employee.printCreatedUser');
         
         }
+        public function createSucessPrint($id){
 
-        // public function edit(){
-        //         return view('Employee.empolyeeEdit')->with('msg','');
-        // }
+                $temp = DB::table('users')
+                ->where('ID',1)
+                ->get();
+                $result = json_decode($temp, true);
+
+                $pdf = PDF :: loadView('Employee.printCreatedUser',['usersInfo'=> $result]);
+                return $pdf->download('disney.pdf');
 
 
-
-        // public function editPage(Request $r){
-        //         $temp = $this->getUserInfo();
-        //         $usersInfo='';
-
-
-        //         foreach($temp as $u){
-        //         if($u['id'] == $r->ID){
-        //                 $usersInfo = $u;
-        //                 break;
-        //         }
-        //         }
-        //         if($usersInfo==''){
-        //                 return view('Employee.empolyeeEdit')->with('msg','Data Not Found');
-        //         }
-        //         return view('Employee.employeeEditPage')->with('usersInfo', $usersInfo);
-                
+                return view('Employee.printCreatedUser')->with('usersInfo', $result);
         
-        // }
+        
+        }
 
         public function editPage2($id){
 

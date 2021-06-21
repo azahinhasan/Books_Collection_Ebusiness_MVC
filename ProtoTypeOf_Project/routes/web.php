@@ -25,8 +25,8 @@ Route::get('/reportList/{id}', 'ReportsController@userReports');
 Route::get('/emplpyee/add', 'EmployeeController@create');
 Route::post('/emplpyee/add', 'EmployeeController@createSucess');
 
-Route::get('/emplpyee/print', 'EmployeeController@createSucessPage');
-Route::post('/emplpyee/print', 'EmployeeController@createSucessPrint');
+Route::get('/emplpyee/print/{id}', 'EmployeeController@createSucessPage');
+Route::post('/emplpyee/print/{id}', 'EmployeeController@createSucessPrint');
 
 Route::get('/emplpyee/edit', 'EmployeeController@edit');
 Route::post('/emplpyee/edit', 'EmployeeController@editPage');
