@@ -13,9 +13,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/emplpyee/add">Add Employee</a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="/emplpyee/edit">Edit Employee</a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="/emplpyee/list">List Employee</a>
           </li>

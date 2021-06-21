@@ -32,7 +32,9 @@ Route::get('/emplpyee/edit', 'EmployeeController@edit');
 Route::post('/emplpyee/edit', 'EmployeeController@editPage');
 
 Route::get('/emplpyee/list', 'EmployeeController@list');
-
+Route::get('/emplpyee/update/{id}', 'EmployeeController@editPage2');
+Route::get('/chnageEmployeeAccess/{value}/{id}', 'EmployeeController@chnageEmployeeAccess');
+Route::post('/emplpyee/list', 'EmployeeController@listSearch');
 
 //Subscription
 Route::get('/user/subscription', 'CustomerController@subscription');

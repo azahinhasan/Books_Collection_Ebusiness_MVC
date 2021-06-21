@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+
 <html>
 <head>
 	<title>Create user</title>
@@ -9,10 +10,14 @@
      @include('.NavBar');
      <br/>
      <h3> User Details </h3>
+  
 
-     
+
+  
+
 	<form method="get">
      <table class="table">
+          @foreach ($usersInfo as $usersInfo)
           <tr>
                <th>Name</th>
                <th>{{$usersInfo['Name']}}</th>
@@ -22,17 +27,30 @@
                <th>{{$usersInfo['Email']}}</th>
           </tr>
           <tr>
+               <th>Password</th>
+               <th>
+                    <input type="password" value="{{$usersInfo['Email']}}" disabled/> 
+                    <a href="/chnageEmployeeAccess/{{'password'}}/{{$usersInfo['ID']}}"><button type="button" onclick="" class="btn btn-primary">R</button> </a> 
+               </th>
+          </tr>
+          <tr>
                <th>Rank</th>
                <th>{{$usersInfo['Rank']}}</th>
           </tr>
           <tr>
+               <th>BanStatus</th>
+               <th>{{$usersInfo['BanStatus']}}</th>
+          </tr>
+          <tr>
                <th>Action</th>
                <th>
-                    <button type="button" class="btn btn-primary">CHNAGE RANK</button>
+                    {{-- <button type="button" class="btn btn-primary">CHNAGE RANK</button> --}}
+                   <a href="/chnageEmployeeAccess/{{$usersInfo['Rank']}}/{{$usersInfo['ID']}}"><button type="button" onclick="" class="btn btn-primary">CHNAGE RANK</button> </a> 
                     <br/>
-                    <button type="button" class="btn btn-danger">DISABLE ACCOUNT</button>
+                    <a href="/chnageEmployeeAccess/{{$usersInfo['BanStatus']==""?'false':'true'}}/{{$usersInfo['ID']}}"><button type="button" class="btn btn-danger">DISABLE ACCOUNT</button> </a> 
                </th>
           </tr>
+          @endforeach
      </table>
 
 

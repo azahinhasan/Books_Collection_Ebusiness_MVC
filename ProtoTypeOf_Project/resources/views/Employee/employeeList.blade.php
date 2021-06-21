@@ -10,9 +10,15 @@
      @include('..NavBar')
 
      <h3>Employee  List</h3>
+     <form method="post">
+          {{-- <p>{{$msg}}</p> --}}
+          <input placeholder="ID" name="ID"/>
+          <input type="submit"  name="create" value="Create" action class="btn btn-primary"/>
+          <a href=""></a>
+	</form>
 
-	<form method="post">
-          
+	<form method="get">
+          {{-- <p>{{$db}}</p> --}}
      <table class="table">
           <tr>
                <th>ID</th>
@@ -22,10 +28,10 @@
           </tr>
           @foreach ($usersList as $user)
                <tr>
-                    <td>{{$user['id']}}</td>
+                    <td>{{$user['ID']}}</td>
                     <td>{{$user['Name']}}</td>
                     <td>{{$user['Rank']}}</td>
-                    <td><a href="/reportList/{{$user['Rank']}}">More</a></td>
+                    <td><a href="/emplpyee/update/{{$user['ID']}}">More</a></td>
                </tr>
           @endforeach
      </table>
