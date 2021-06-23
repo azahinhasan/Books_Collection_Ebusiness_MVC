@@ -1,51 +1,59 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ReportsController extends Controller
 {
 
     public function reportList(){
-         $users = $this->getUserList();
-         return view('checkReportList')->with('reportlist', $users);
+        $data = DB::table('reports')
+        ->get(); 
+
+    $result = json_decode($data, true);
+
+    return view('Customer.checkReportList')->with('reportlist', $result)->with('msg','');
     }
     public function userReports($id){
-        $usersReports = $this->getUserReports();
-        $usersInfoAll = $this->getUserInfo();
-        $usersInfo='';
-        $users=$usersReports;
-        $msg='';
+        $userInfo = DB::table('users')
+        ->where('ID', $id )
+        ->get();
 
-        foreach($usersInfoAll as $u){
-            if($u['id'] == $id){
-                $usersInfo = $u;
-                break;
-            }
-        }
+        $hisALLReports = DB::table('reports')
+        ->where('gotReported', $id )
+        ->get();
 
-        foreach($usersReports as $u){
-            if($u['GotRepotedID'] == $id){
-               // $users = join(",",$u);
-                
-            }
-        }
+        $usersInfo2 = json_decode($userInfo, true);
+        $reports = json_decode($hisALLReports, true);
 
-        return view('checkGotReportedUserInfo')->with('reports', $users)->with('usersInfo', $usersInfo)->with('msg', $msg);
+        return view('Customer.checkGotReportedUserInfo')->with('reports', $reports)->with('usersInfo', $usersInfo2)->with('msg', '');
    }
+
    public function userInfo(){
     $users = $this->getUserInfo();
     return view('userInfo')->with('userInfo', $users);
 }
 
-    public function getUserList(){
-         return [
-              ['id'=>1, 'GotRepotedID'=>1, 'RepoterID'=>'4'],
-              ['id'=>2, 'GotRepotedID'=>2, 'RepoterID'=>'5'],
-              ['id'=>3, 'GotRepotedID'=>3, 'RepoterID'=>'6'],
-         ];
-    } 
+   public function banAccount($value,$id){
+
+             $msg='';
+                
+                if($value=='false'|| $value==null) {
+                        DB::table('users')
+                        ->where('ID', $id)
+                        ->update(['BanStatus' => 'true']);
+                        $msg='Account Disabled!';
+                }
+                else if($value=='true') {
+                        DB::table('users')
+                        ->where('ID', $id)
+                        ->update(['BanStatus' => 'false']);
+                        $msg='Account Enabled!';
+                }
+
+                return redirect('/reportList/'.$id)->with('msg',$msg);
+        }
     
     public function getUserReports(){
         return [

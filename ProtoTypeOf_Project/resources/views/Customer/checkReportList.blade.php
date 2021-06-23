@@ -12,19 +12,19 @@
      <h3> Report List </h3>
 
 	<form method="post">
-     <input placeholder="ID/Email"/>
-     <button type="button" class="btn btn-info">SEARCH</button>
      <table class="table">
           <tr>
-               <th>GotRepotedID</th>
-               <th>RepoterID</th>
+               <th>Reporter</th>
+               <th>Got Reported</th>
+               <th>Text</th>
                <th>Action</th>
           </tr>
           @foreach ($reportlist as $user)
           <tr>
-               <td>{{$user['GotRepotedID']}}</td>
-               <td>{{$user['RepoterID']}}</td>
-               <td><a href="/reportList/{{$user['GotRepotedID']}}">More</a></td>
+               <td>{{$user['reporter']}}</td>
+               <td>{{$user['gotReported']}}</td>
+               <td>{{$user['text']}}</td>
+               <td><a href="/reportList/{{$user['gotReported']}}">More</a></td>
           </tr>
           @endforeach
      </table>

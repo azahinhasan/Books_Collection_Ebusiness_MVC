@@ -65,11 +65,11 @@ class EmployeeController extends Controller
                 ->get();
                 $result = json_decode($temp, true);
 
-                $pdf = PDF :: loadView('Employee.printCreatedUser',['usersInfo'=> $result]);
-                return $pdf->download('disney.pdf');
+                // $pdf = PDF :: loadView('Employee.printCreatedUser',['usersInfo'=> $result]);
+                // return $pdf->download('disney.pdf');
 
 
-                return view('Employee.printCreatedUser')->with('usersInfo', $result);
+                return view('Employee.printCreatedUser')->with('usersInfo', $result)->with('msg','');
         
         
         }
@@ -85,7 +85,7 @@ class EmployeeController extends Controller
                 // if($usersInfo==''){
                 //         return view('Employee.empolyeeEdit')->with('msg','Data Not Found');
                 // }
-               return view('Employee.employeeEditPage')->with('usersInfo', $result);
+               return view('Employee.employeeEditPage')->with('usersInfo', $result)->with('msg','');
              
         }
         public static  function list(){
@@ -123,25 +123,29 @@ class EmployeeController extends Controller
 
         public function chnageEmployeeAccess($value,$id){
 
-             
+             $msg='';
                 
                 if($value=='Admin'){
                         DB::table('users')
                         ->where('ID', $id)
                         ->update(['Rank' => 'Moderator']);
+                        $msg='Rank Chnaged to Moderator';
                 }else if($value=='Moderator'){
                         DB::table('users')
                         ->where('ID', $id)
                         ->update(['Rank' => 'Admin']);
+                        $msg='Rank Chnaged to Admin';
                 }else if($value=='false'|| $value==null) {
                         DB::table('users')
                         ->where('ID', $id)
                         ->update(['BanStatus' => 'true']);
+                        $msg='Account Disabled!';
                 }
                 else if($value=='true') {
                         DB::table('users')
                         ->where('ID', $id)
                         ->update(['BanStatus' => 'false']);
+                        $msg='Account Enabled!';
                 }else if($value=='password') {
                         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                         $pin = mt_rand(1000000, 9999999)
@@ -152,9 +156,10 @@ class EmployeeController extends Controller
                         DB::table('users')
                         ->where('ID', $id)
                         ->update(['Password' =>$string]);
+                        $msg='PAssword Reseted';
                 }
 
-                return redirect('/emplpyee/update/'.$id);
+                return redirect('/emplpyee/update/'.$id)->with('msg',$msg);
         }
 
 

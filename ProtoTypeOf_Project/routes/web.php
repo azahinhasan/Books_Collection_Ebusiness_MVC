@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/reportList', 'ReportsController@reportList');
 //ReportPart
 Route::get('/reportList/{id}', 'ReportsController@userReports');
+Route::get('/banAccount/{value}/{id}', 'ReportsController@banAccount');
 
 //Employee
 Route::get('/emplpyee/add', 'EmployeeController@create');

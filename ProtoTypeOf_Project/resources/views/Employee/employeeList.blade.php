@@ -11,9 +11,10 @@
 
      <h3>Employee  List</h3>
      <form method="post">
+          
           {{-- <p>{{$msg}}</p> --}}
           <input placeholder="ID" name="ID"/>
-          <input type="submit"  name="create" value="Create" action class="btn btn-primary"/>
+          <input type="submit"  name="create" value="FIND" action class="btn btn-primary"/>
           <a href=""></a>
 	</form>
 
