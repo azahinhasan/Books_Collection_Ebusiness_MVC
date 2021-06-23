@@ -9,7 +9,6 @@
      @include('.NavBar')
      <br/>
      <h3> User Details </h3>
-
      
 	<form method="get">
      <table class="table">

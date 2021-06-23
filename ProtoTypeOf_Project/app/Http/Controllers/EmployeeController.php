@@ -88,7 +88,11 @@ class EmployeeController extends Controller
                return view('Employee.employeeEditPage')->with('usersInfo', $result)->with('msg','');
              
         }
-        public static  function list(){
+        public   function list(){
+                return $this->listData('');
+        }
+
+        public  function listData($msg){
 
                 $data = DB::table('users')
                         ->where('Rank', 'Admin' )
@@ -97,25 +101,33 @@ class EmployeeController extends Controller
                         ->get(); 
 
                 $result = json_decode($data, true);
-                return view('Employee.employeeList')->with('usersList', $result)->with('msg','');
+                return view('Employee.employeeList')->with('usersList', $result)->with('msg',$msg);
         }
 
-        public   function listSearch(Request $r){
+        public  function listSearch(Request $r){
+
                 $msg='';
+                $data ='';
 
                 $data = DB::table('users')
                         ->where('ID',  $r->ID)
-                        ->where('Rank', 'Moderator' )
-                        ->orWhere('Rank', 'Admin')
+                        // ->where('Rank', 'Moderator' )
+                        // ->orWhere('Rank', 'Admin')
 
                         ->get(); 
                 
-                if($data==''){
-                       $this->list(); 
+                if(count($data)<1){
+                        $data = DB::table('users')
+                        ->where('Email',  $r->ID)
+                        ->get(); 
+                        if(count($data)<1){
+                              return  $this->listData('Not Found'); 
+                        }
+                
                 }
 
                 $result = json_decode($data, true);
-                return view('Employee.employeeList')->with('usersList',  $result)->with('msg',$msg);
+                return view('Employee.employeeList')->with('usersList',  $result)->with('msg','');
 
         }
 
@@ -162,12 +174,4 @@ class EmployeeController extends Controller
                 return redirect('/emplpyee/update/'.$id)->with('msg',$msg);
         }
 
-
-        public function getUserInfo(){
-                return [
-                     ['id'=>1, 'Name'=>'zz', 'Email'=>'a@a.com','Rank'=>'Admin'],
-                     ['id'=>2, 'Name'=>'aa', 'Email'=>'a@a.com','Rank'=>'Admin'],
-                     ['id'=>3, 'Name'=>'gg', 'Email'=>'a@a.com','Rank'=>'']
-                ];
-            }
 }

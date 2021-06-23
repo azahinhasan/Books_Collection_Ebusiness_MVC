@@ -15,7 +15,7 @@
           {{-- <p>{{$msg}}</p> --}}
           <input placeholder="ID" name="ID"/>
           <input type="submit"  name="create" value="FIND" action class="btn btn-primary"/>
-          <a href=""></a>
+          <p>{{$msg}}</p>
 	</form>
 
 	<form method="get">
