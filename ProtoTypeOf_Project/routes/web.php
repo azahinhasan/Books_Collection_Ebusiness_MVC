@@ -42,6 +42,9 @@ Route::post('/emplpyee/updatePassword', 'EmployeeController@updatePass');
 
 Route::get('/emplpyee/salaryList', 'EmployeeV2Contorller@salaryList');
 Route::get('/employee/giveSalary/{id}', 'EmployeeV2Contorller@giveSalaryOption');
+Route::post('/employee/giveSalary/{id}', 'EmployeeV2Contorller@confirmSalary');
+
+Route::get('/employee/deleteSalary/{id}', 'EmployeeV2Contorller@deleteSalaryOption');
 
 //Subscription
 Route::get('/user/subscription', 'CustomerController@subscription');

@@ -11,14 +11,24 @@
       @include('..NavBar')
       <h3> Report List </h3>
 
+   <br/><br/>
    <form method="post">
-
       @if($giveSalaryOption != '')
+      <h6>GIVE SALARY</h6>
          <table class="table">
             <tr>
-               <td><input value='{{$giveSalaryOption}}' disabled name="ID"/></td>
-               <td><input value='{{$userName}}' disabled name='userName'/></td>
-               <td><input value='{{$salaryAmont}}' disabled name='salaryAmount'/></td>
+               <th>UserID</th>
+               <th>Name</th>
+               <th>salaryAmont</th>
+               <th>MonthName</th>
+               <th>Year</th>
+
+            </tr>
+            <tr>
+               {{-- <td><input value='{{$giveSalaryOption}}' disabled name="ID"/></td> --}}
+               <td><input value='{{$userId}}'  name='userID' /></td>
+               <td><input value='{{$userName}}' name='userName' /></td>
+               <td><input value='{{$salaryAmont}}'  name='salaryAmount'/></td>
                <td>
                   <select  name='month'>
                      <option>January</option>
@@ -44,7 +54,7 @@
          </table>
       @endif
    </form>   
-
+   <br/><br/>
    <form method="get">
       <table class="table">
             <tr>
@@ -78,7 +88,10 @@
                <td>{{$user['September']}}</td>
                <td>{{$user['October']}}</td>
                <td>{{$user['Year']}}</td>
-               <td><a href="/employee/giveSalary/{{$user['ID']}}">Give Salary</a></td>
+               <td>
+                  <a href="/employee/giveSalary/{{$user['ID']}}">ADD </a>
+                  <a href="/employee/deleteSalary/{{$user['ID']}}">DELETE</a>
+               </td>
             </tr>
             @endforeach
       </table>
