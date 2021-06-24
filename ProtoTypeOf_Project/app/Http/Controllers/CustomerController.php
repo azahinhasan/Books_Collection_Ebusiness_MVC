@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class CustomerController extends Controller
 {
 
@@ -29,7 +29,42 @@ class CustomerController extends Controller
         ];
     }
 
+    public function SubscriptionUsersList($value){
+        if($value=="all"){
+            $user = DB::table('users')
+            ->get(); 
+        }else if($value=="premium"){
+            $user = DB::table('users')
+            ->where('Premium',  'true')
+            ->get(); 
+        }else{
+            $user = DB::table('users')
+            ->where('Premium',  'false')
+            ->orwhere('premium',  null)
+            ->get(); 
+        }
+        $result = json_decode($user, true);
+
+        return view('Customer.Subscription.SubscriptionUsersList')->with('usersList',$result);
+
+    }
+
     public function pieChart(){
-        return view('Customer.pieChartSubscription')->with('Standerd',5)->with('Premium',5);
+        $Standerd = DB::table('users')
+        ->where('Premium',  'true')
+        ->get(); 
+        $Premium = DB::table('users')
+        ->where('premium',  'false')
+        ->orwhere('premium',  null)
+        ->get();
+        $NotBanned = DB::table('users')
+        ->where('BanStatus',  'false')
+        ->orwhere('BanStatus',  null)
+        ->get(); 
+        $Banned = DB::table('users')
+        ->where('BanStatus',  'true')
+        ->get();  
+
+        return view('Customer.pieChartSubscription')->with('Standerd',count($Standerd))->with('Premium',count($Premium))->with('NotBanned',count($NotBanned))->with('Banned',count($Banned));
     }
 }

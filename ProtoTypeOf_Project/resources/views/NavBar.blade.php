@@ -23,11 +23,21 @@
             <a class="nav-link" href="/reportList">Report</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/subscription">Subscription </a>
+            <a class="nav-link" href="/user/subscription">Subscription</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/subscription/pieChart">Pie Chart </a>
+            <a class="nav-link" href=" /user/subscription/list/all">Subscription List</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/subscription/pieChart">Pie Chart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/emplpyee/salaryList/">Salary Option</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/emplpyee/updatePassword">Update Password</a>
+          </li>
+         
         </ul>
 </body>
 </html>

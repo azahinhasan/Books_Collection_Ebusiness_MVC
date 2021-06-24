@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\DB;
@@ -34,11 +34,15 @@ class EmployeeController extends Controller
                         'DOB' => $req->DOB,
                         'Password' => 'p',
                         'Rank' => $req->Rank]);
-
+         
                 if( $data== true){
                         $temp = DB::table('users')
                         ->where('Email', $req->Email )
                         ->first();
+
+                DB::table('employeesalary')->insert(
+                                ['userId' => $temp->ID,
+                                'userName' => $req->Name]);
 
                         return redirect('/emplpyee/print/'.$temp->ID)->with('print',true);
                 }
@@ -121,7 +125,7 @@ class EmployeeController extends Controller
                         ->where('Email',  $r->ID)
                         ->get(); 
                         if(count($data)<1){
-                              return  $this->listData('Not Found'); 
+                                return  $this->listData('Not Found'); 
                         }
                 
                 }
@@ -173,5 +177,37 @@ class EmployeeController extends Controller
 
                 return redirect('/emplpyee/update/'.$id)->with('msg',$msg);
         }
+
+
+        public function updatePassPage(){
+
+                return view('Employee.updatePassword')->with('msg', '');
+        
+        }
+
+        public function updatePass(Request $r){
+                $msg='';
+                //$email = $r->session()->get('Email');
+                $email = 'a@a.com';
+                $data = DB::table('users')
+                ->where('Email',  $email)
+                ->where('Password',  $r->oPass)
+                ->get(); 
+
+
+                if(count($data)>0){
+
+                DB::table('users')
+                        ->where('Email', $email)
+                        ->update(['Password' => $r->nPass]);
+                        
+                        return view('Employee.updatePassword')->with('msg', 'Password Updated!');
+                }
+
+                return view('Employee.updatePassword')->with('msg', 'Old Password is Wrong!');
+                //return view('Employee.updatePassword')->with('msg', $email);
+        }
+
+        
 
 }

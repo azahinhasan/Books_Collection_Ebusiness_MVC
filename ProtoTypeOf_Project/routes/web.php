@@ -37,10 +37,17 @@ Route::get('/emplpyee/update/{id}', 'EmployeeController@editPage2');
 Route::get('/chnageEmployeeAccess/{value}/{id}', 'EmployeeController@chnageEmployeeAccess');
 Route::post('/emplpyee/list', 'EmployeeController@listSearch');
 
+Route::get('/emplpyee/updatePassword', 'EmployeeController@updatePassPage');
+Route::post('/emplpyee/updatePassword', 'EmployeeController@updatePass');
+
+Route::get('/emplpyee/salaryList', 'EmployeeV2Contorller@salaryList');
+Route::get('/employee/giveSalary/{id}', 'EmployeeV2Contorller@giveSalaryOption');
+
 //Subscription
 Route::get('/user/subscription', 'CustomerController@subscription');
 Route::post('/user/subscription', 'CustomerController@subscriptionUpdate');
 
+Route::get('/user/subscription/list/{value}', 'CustomerController@SubscriptionUsersList');
 Route::get('/user/subscription/pieChart', 'CustomerController@pieChart');
 
 //Route::get('/emplpyee/add', 'EmployeeController@create');
