@@ -15,6 +15,7 @@ class BookZController extends Controller
 
         $temp = DB::table('books')
        // ->where('Name', $data->search)
+       ->where('Name', 'like', '%'.$data->search.'%')
         ->get();
         $result = json_decode($temp, true);
 

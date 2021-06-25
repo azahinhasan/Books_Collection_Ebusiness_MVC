@@ -6,13 +6,18 @@
 }
 #DataBox{
    float: left;
-   width: 24.4%;
+   /* width: 24.4%; */
+   width: 480px;
    padding: 5px;
 
    border: 2px solid black;
    border-radius: 5px;
    margin: 5px;
    text-align: center;
+}
+#DataBox:hover{
+   border: 2px solid rgb(25, 37, 146);
+   box-shadow: 2px 2px rgb(110, 88, 88);
 }
 
 * {

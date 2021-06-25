@@ -17,20 +17,35 @@
          <input type="submit" name="submit" value="SEARCH"/>
 
       </form>
-      <div id='box' class="card">
+      <br/> <br/>
+      <a href="" id='box' class="card">
          @if($bookList!='')
             @foreach ($bookList as $book)
             <span  id='DataBox' class="card-body">
-               <div>{{$book['Name']}}</div>
-               <div>{{$book['Price']}}</div>
-               <div>{{$book['Rating']}}</div>
-               <div>{{$book['ShopID']}}</div>
+               <table class="table">
+                  <tr>
+                     <th>Name</th>
+                     <th>{{$book['Name']}}</th>
+                  </tr>
+                  <tr>
+                     <td>Price</td>
+                     <td>{{$book['Price']}}</td>
+                  </tr>
+                  <tr>
+                     <td>Rating</td>
+                     <td>{{$book['Rating']}}</td>
+                  </tr>
+                  <tr>
+                     <td>ShopID</td>
+                     <td>{{$book['ShopID']}}</td>
+                  </tr>
+               </table>
             </span>
          @endforeach
          @endif
 
 
-      </div>
+      </a>
       </body>
 
 </body>
