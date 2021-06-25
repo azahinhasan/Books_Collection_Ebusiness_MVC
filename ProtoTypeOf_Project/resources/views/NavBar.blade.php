@@ -41,6 +41,10 @@
             <a class="nav-link" href="/bookSearch/">Book Search</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="  /user/economic/2020">Earning Data</a>
+          </li>
+        
+          <li class="nav-item">
             <a class="nav-link" href="/emplpyee/updatePassword">Update Password</a>
           </li>
          

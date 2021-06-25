@@ -60,4 +60,9 @@ Route::get('/user/subscription/pieChart', 'CustomerController@pieChart');
 Route::post('/bookSearch', 'BookZController@bookSearcWithResults');
 Route::get('/bookSearch', 'BookZController@bookSearch');
 
+
+//Economic
+Route::get('/user/economic/{year}', 'EconomicController@earningData');
+//Route::get('/user/economic/{year}', 'EconomicController@earningDataByYear');
+
 //Route::get('/emplpyee/add', 'EmployeeController@create');

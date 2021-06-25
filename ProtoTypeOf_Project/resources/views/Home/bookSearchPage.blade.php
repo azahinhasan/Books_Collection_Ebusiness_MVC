@@ -24,6 +24,12 @@
             <span  id='DataBox' class="card-body">
                <table class="table">
                   <tr>
+                     <th></th>
+                     <th>
+                        <img src="{{$book['BookSampleImage1']}}" alt="Girl in a jacket" width="80" height="120">
+                     </th>
+                  </tr>
+                  <tr>
                      <th>Name</th>
                      <th>{{$book['Name']}}</th>
                   </tr>

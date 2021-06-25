@@ -55,7 +55,6 @@
                <td>{{$user['Shopper_Name']}}</td>
                <td>{{$user['Shop_Licence']}}</td>
                <td>{{$user['Shop_Address']}}</td>
-               <td>{{$user['Phone']}}</td>
             </tr>
          
          @endforeach
