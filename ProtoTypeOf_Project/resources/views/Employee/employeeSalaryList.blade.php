@@ -14,7 +14,7 @@
    <br/><br/>
    <form method="post">
       @if($giveSalaryOption != '')
-      <h6>GIVE SALARY</h6>
+      <h6>UPDATE SALARY</h6>
          <table class="table">
             <tr>
                <th>UserID</th>
@@ -22,7 +22,7 @@
                <th>salaryAmont</th>
                <th>MonthName</th>
                <th>Year</th>
-
+               <th>Action</th>
             </tr>
             <tr>
                {{-- <td><input value='{{$giveSalaryOption}}' disabled name="ID"/></td> --}}
@@ -48,10 +48,17 @@
                   </select>
                </td>
                <td>
+                  <select  name='action'>
+                     <option>ADD</option>
+                     <option>REMOVE</option>
+                  </select>
+               </td>
+               <td>
                   <input type='submit' value='SAVE'/>
                </td>
             </tr>
          </table>
+         <p style="color: brown;">{{$msg}}</p>
       @endif
    </form>   
    <br/><br/>
@@ -89,8 +96,7 @@
                <td>{{$user['October']}}</td>
                <td>{{$user['Year']}}</td>
                <td>
-                  <a href="/employee/giveSalary/{{$user['ID']}}">ADD </a>
-                  <a href="/employee/deleteSalary/{{$user['ID']}}">DELETE</a>
+                  <a href="/employee/giveSalary/{{$user['ID']}}">CLICK</a>
                </td>
             </tr>
             @endforeach

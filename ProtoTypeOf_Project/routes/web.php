@@ -44,13 +44,20 @@ Route::get('/emplpyee/salaryList', 'EmployeeV2Contorller@salaryList');
 Route::get('/employee/giveSalary/{id}', 'EmployeeV2Contorller@giveSalaryOption');
 Route::post('/employee/giveSalary/{id}', 'EmployeeV2Contorller@confirmSalary');
 
-Route::get('/employee/deleteSalary/{id}', 'EmployeeV2Contorller@deleteSalaryOption');
-
+//Shop
+Route::get('/shop/list', 'CustomerController@shopList');
+Route::get('/shop/details/{id}/{licence}', 'CustomerController@shopVerify');
+Route::post('/shop/details/{id}/{licence}', 'CustomerController@shopVerifyConfirm');
 //Subscription
 Route::get('/user/subscription', 'CustomerController@subscription');
 Route::post('/user/subscription', 'CustomerController@subscriptionUpdate');
 
 Route::get('/user/subscription/list/{value}', 'CustomerController@SubscriptionUsersList');
 Route::get('/user/subscription/pieChart', 'CustomerController@pieChart');
+
+
+//Book Search
+Route::post('/bookSearch', 'BookZController@bookSearcWithResults');
+Route::get('/bookSearch', 'BookZController@bookSearch');
 
 //Route::get('/emplpyee/add', 'EmployeeController@create');

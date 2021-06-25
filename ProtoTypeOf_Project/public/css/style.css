@@ -1,0 +1,21 @@
+
+#box{
+   /* content: ""; */
+   clear: both;
+   display: table;
+}
+#DataBox{
+   float: left;
+   width: 24.4%;
+   padding: 5px;
+
+   border: 2px solid black;
+   border-radius: 5px;
+   margin: 5px;
+   text-align: center;
+}
+
+* {
+   box-sizing: border-box;
+ }
+ 

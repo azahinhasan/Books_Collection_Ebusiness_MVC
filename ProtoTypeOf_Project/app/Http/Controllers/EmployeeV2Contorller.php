@@ -13,68 +13,68 @@ class EmployeeV2Contorller extends Controller
 
         $result = json_decode($data, true);
 
-        return view('Employee.employeeSalaryList')->with('salaryList', $result)->with('giveSalaryOption', '')->with('userName', '')->with('salaryAmont', '')->with('userId','')->with('showPart','');
+        return view('Employee.employeeSalaryList')->with('salaryList', $result)->with('giveSalaryOption', '')->with('userName', '')->with('salaryAmont', '')
+                    ->with('userId','')->with('showPart','')->with('msg','');
 
+    }
+
+
+    public function confirmSalaryPageData($id,$msg){
+        $data = DB::table('employeesalary')
+        ->get(); 
+
+        $salaryInfo=DB::table('employeesalary')
+            ->where('ID',$id)
+            ->first(); 
+
+        $result = json_decode($data, true);
+
+        return view('Employee.employeeSalaryList')->with('salaryList', $result)->with('giveSalaryOption', $id)->with('userName', $salaryInfo->userName)
+        ->with('salaryAmont',$salaryInfo->Amount)->with('userId',$salaryInfo->userId)->with('showPart','add')->with('msg',$msg);
     }
 
     public function giveSalaryOption($id){
 
-        $data = DB::table('employeesalary')
-                        ->get(); 
-
-        $salaryInfo=DB::table('employeesalary')
-                    ->where('ID',$id)
-                    ->first(); 
-
-        $result = json_decode($data, true);
-
-        return view('Employee.employeeSalaryList')->with('salaryList', $result)->with('giveSalaryOption', $id)->with('userName', $salaryInfo->userName)
-        ->with('salaryAmont',$salaryInfo->Amount)->with('userId',$salaryInfo->userId)->with('showPart','add');
+       return  $this->confirmSalaryPageData($id,'');
 
     }
 
-    public function deleteSalaryOption($id){
 
-        $data = DB::table('employeesalary')
-                        ->get(); 
-
-        $salaryInfo=DB::table('employeesalary')
-                    ->where('ID',$id)
-                    ->first(); 
-
-        $result = json_decode($data, true);
-
-        return view('Employee.employeeSalaryList')->with('salaryList', $result)->with('giveSalaryOption', $id)->with('userName', $salaryInfo->userName)
-        ->with('salaryAmont',$salaryInfo->Amount)->with('userId',$salaryInfo->userId)->with('showPart','delete');
-
-    }
 
     public function confirmSalary(Request $data,$id){
 
 
         $temp = DB::table('employeesalary')
-                ->where('userId',  $data->userID)
-                ->where('Year',$data->year)
-                ->get(); 
-
+        ->where('userId',  $data->userID)
+        ->where('Year',$data->year)
+        ->get(); 
         if(count($temp)<1){
             DB::table('employeesalary')->insert(
                 ['userId' => $data->userID,
                 'userName' => $data->userName,
                 'Year' => $data->year,
-                'Amount' => $data->salaryAmount,
+                'Amount' =>  $data->salaryAmount,
                 $data->month => 'true']);
-
-                // ['userId' => '1',
-                // 'userName' => '2']);
+    
         }
 
-        DB::table('employeesalary')
-            ->where('userId', $data->userID)
-            ->where('Year',$data->year)
-            ->update([$data->month => 'true']);
-        //return error_log('5');
-        return $this->giveSalaryOption($id);
+        if($data->action=='REMOVE'){
+
+            DB::table('employeesalary')
+                ->where('userId', $data->userID)
+                ->where('Year',$data->year)
+                ->update([$data->month => 'false']);
+        }
+        else{
+
+            DB::table('employeesalary')
+                ->where('userId', $data->userID)
+                ->where('Year',$data->year)
+                ->update([$data->month => 'true']);
+           
+        }
+
+        return  $this->confirmSalaryPageData($id,'Data Updated!');
     }
 
 }

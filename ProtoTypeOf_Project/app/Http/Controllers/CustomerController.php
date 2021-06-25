@@ -67,4 +67,39 @@ class CustomerController extends Controller
 
         return view('Customer.pieChartSubscription')->with('Standerd',count($Standerd))->with('Premium',count($Premium))->with('NotBanned',count($NotBanned))->with('Banned',count($Banned));
     }
+
+    public function shopList(){
+       
+        $shopList=DB::table('shop')
+                        ->get();
+        $result = json_decode($shopList, true);
+        return view('Shop.shopList')->with('shopList',$result);
+    }
+
+    public function shopVerify($id,$licence){
+        $msg ='' ;
+        $shopInfo=DB::table('shop')
+                        ->where('Shop_id',$id)
+                        ->get();
+        $shopInfoLicence=DB::table('shop_licence')
+                        ->where('Shop_Licence',$licence)
+                        ->get();
+
+        if(count($shopInfoLicence)<1){
+            $msg='Shop Licence Is Not Valid!';
+        }
+        $result = json_decode($shopInfo, true);
+        $result2 = json_decode($shopInfoLicence, true);
+
+        return view('Shop.shopDetails')->with('shop_info',$result)->with('shop_licence',$result2)->with('msg',$msg);
+    }
+
+    public function shopVerifyConfirm($id,$licence){
+
+        DB::table('shop')
+        ->where('Shop_id', $id)
+        ->update(['Verified_Status' => 'true']);
+
+        return $this->shopVerify($id,$licence);
+    }
 }

@@ -35,6 +35,12 @@
             <a class="nav-link" href="/emplpyee/salaryList/">Salary Option</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/shop/list">Shop List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bookSearch/">Book Search</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/emplpyee/updatePassword">Update Password</a>
           </li>
          
