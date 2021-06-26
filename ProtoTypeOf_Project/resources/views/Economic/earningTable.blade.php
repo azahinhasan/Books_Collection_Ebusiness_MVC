@@ -62,12 +62,12 @@
             ["February",{{$user['February']}}, "silver"],
             ["March", {{$user['March']}}, "gold"],
             ["April", {{$user['April']}}, "color: #e5e4e2"],
-            ["May", {{$user['May']}}, "color: #e5e4e2"],
-            ["June",{{$user['June']}}, "color: #e5e4e2"],
-            ["July", {{$user['July']}}, "color: #e5e4e2"],
-            ["August", {{$user['August']}}, "color: #e5e4e2"],
-            ["September", {{$user['September']}}, "color: #e5e4e2"],
-            ["October", {{$user['October']}}, "color: #e5e4e2"],
+            ["May", {{$user['May']}}, "color: #229954"],
+            ["June",{{$user['June']}}, "color: #AF601A"],
+            ["July", {{$user['July']}}, "color: #2874A6"],
+            ["August", {{$user['August']}}, "color: #F1948A "],
+            ["September", {{$user['September']}}, "color:#6C3483"],
+            ["October", {{$user['October']}}, "color: #6E2C00"],
           ]);
     
           var view = new google.visualization.DataView(data);
@@ -113,7 +113,7 @@ window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
-	theme: "light2",
+	theme: "light1",
 	title:{
 		text: "Earning of {{$user['Year']}}"
 	},
