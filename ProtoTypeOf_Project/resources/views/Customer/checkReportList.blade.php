@@ -10,7 +10,7 @@
 
      @include('..NavBar')
      <h3> Report List </h3>
-
+     <p>{{session(['Email'=>'2'])}} ss</p>
 	<form method="post">
      <table class="table">
           <tr>

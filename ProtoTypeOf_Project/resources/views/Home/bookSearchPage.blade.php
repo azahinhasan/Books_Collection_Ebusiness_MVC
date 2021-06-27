@@ -26,7 +26,7 @@
                   <tr>
                      <th></th>
                      <th>
-                        <img src="{{$book['BookSampleImage1']}}" alt="Girl in a jacket" width="80" height="120">
+                        <img src="{{$book['BookSampleImage1']}}" alt="image!" width="80" height="120">
                      </th>
                   </tr>
                   <tr>

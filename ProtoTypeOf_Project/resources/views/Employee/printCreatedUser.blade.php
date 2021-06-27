@@ -15,6 +15,11 @@
 		<h3>Welcome!</h3>
 		@foreach ($usersInfo as $usersInfo)
 			<tr>
+				<td></td>
+				<td><img src="/upload/{{$usersInfo['ProPic']}}" alt="ProPic+" width="180" height="200"></td>
+				{{-- 	<td><img src="/upload/wp9319391-battlefield-2042-wallpapers.jpg" alt="ProPic+" width="500" height="600"></td> --}}
+			</tr>
+			<tr>
 				<td style="font-weight: bolder;">Name</td>
 				<td style="font-weight: bolder;">{{$usersInfo['Name']}}</td>
 			</tr>

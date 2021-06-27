@@ -17,15 +17,32 @@ class EmployeeController extends Controller
 
         public function createSucess(Request $req){
 
+               $ProPicNmae ='';
                 $temp = DB::table('users')
                 ->where('Email', $req->Email )
                 ->get();
 
-             //  dd($temp);
-//
+
                 if(count($temp)>0){
                         return view('Employee.regEmployee')->with('print',false)->with('msg','Email Aready Taken');
                 }
+
+                 if($req->hasFile('image')){
+                        $file = $req->file('image');
+                       // echo "file name: ".."<br>";
+
+                       if($file->getClientOriginalExtension()!='jpg' || $file->getClientOriginalExtension()!='png')
+                       {
+                        return view('Employee.regEmployee')->with('print',false)->with('msg','Image should be JPG/PNG');
+                       }
+                        $ProPicNmae=$file->getClientOriginalName();
+                       $file->move('upload',$file->getClientOriginalName());
+
+                       
+                }else{
+                        return view('Employee.regEmployee')->with('print',false)->with('msg','Have To Upload Valid Image!');
+                }
+
 
                $data= DB::table('users')->insert(
                         ['Email' => $req->Email,
@@ -33,7 +50,11 @@ class EmployeeController extends Controller
                         'Name' => $req->Name,
                         'DOB' => $req->DOB,
                         'Password' => 'p',
+                        'ProPic' =>  $ProPicNmae,
                         'Rank' => $req->Rank]);
+
+                
+                
          
                 if( $data== true){
                         $temp = DB::table('users')
@@ -42,7 +63,8 @@ class EmployeeController extends Controller
 
                 DB::table('employeesalary')->insert(
                                 ['userId' => $temp->ID,
-                                'userName' => $req->Name]);
+                                'userName' => $req->Name,
+                                'Amount' => $req->Amount,]);
 
                         return redirect('/emplpyee/print/'.$temp->ID)->with('print',true);
                 }

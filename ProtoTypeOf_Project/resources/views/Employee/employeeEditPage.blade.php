@@ -19,9 +19,15 @@
      <table class="table">
           @foreach ($usersInfo as $usersInfo)
           <tr>
+               <th></th>
+                <td><img src="/upload/{{$usersInfo['ProPic']}}" alt="ProPic+" width="180" height="200"></td>
+          </tr>
+          <tr>
                <th>Name</th>
                <th>{{$usersInfo['Name']}}</th>
           </tr>
+
+        
           <tr>
                <th>Email</th>
                <th>{{$usersInfo['Email']}}</th>
@@ -29,7 +35,7 @@
           <tr>
                <th>Password</th>
                <th>
-                    <input type="password" value="{{$usersInfo['Email']}}" disabled/> 
+                    <input type="text" value="{{$usersInfo['Password']}}" disabled /> 
                     <a href="/chnageEmployeeAccess/{{'password'}}/{{$usersInfo['ID']}}"><button type="button" onclick="" class="btn btn-primary">R</button> </a> 
                </th>
           </tr>
@@ -38,17 +44,21 @@
                <th>{{$usersInfo['Rank']}}</th>
           </tr>
           <tr>
-               <th>BanStatus</th>
+               <th>DisableStatus</th>
                <th>{{$usersInfo['BanStatus']}}</th>
           </tr>
           <tr>
                <th>Action</th>
                <th>
                     {{-- <button type="button" class="btn btn-primary">CHNAGE RANK</button> --}}
+                   <a>{{$msg}}</a>
                    <a href="/chnageEmployeeAccess/{{$usersInfo['Rank']}}/{{$usersInfo['ID']}}"><button type="button" onclick="" class="btn btn-primary">CHNAGE RANK</button> </a> 
                     <br/>
-                    <a href="/chnageEmployeeAccess/{{$usersInfo['BanStatus']==""?'false':'true'}}/{{$usersInfo['ID']}}"><button type="button" class="btn btn-danger">DISABLE ACCOUNT</button> </a> 
+                    <a href="/chnageEmployeeAccess/{{$usersInfo['BanStatus']==""||$usersInfo['BanStatus']=="false"?'false':'true'}}/{{$usersInfo['ID']}}"><button type="button" class="btn btn-danger">DISABLE ACCOUNT</button> </a> 
+                    <br/>
+                    <a href="/emplpyee/print/{{$usersInfo['ID']}}" target="_blank"><button type="button" class="btn btn-dark">PRINT</button> </a> 
                </th>
+
           </tr>
           @endforeach
      </table>

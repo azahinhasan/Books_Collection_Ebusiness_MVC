@@ -9,7 +9,7 @@
 <body>
 
       @include('..NavBar')
-      <h3> Report List </h3>
+      <h3> Salary List </h3>
 
    <br/><br/>
    <form method="post">
@@ -36,9 +36,10 @@
                      <option>March</option>
                      <option>April</option>
                      <option>May</option>
+                      <option>June</option>
                      <option>July</option>
                      <option>August</option>
-                     <option>August</option>
+                    
                   </select>
                </td>
                <td>

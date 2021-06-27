@@ -51,11 +51,12 @@ class CustomerController extends Controller
 
     public function pieChart(){
         $Standerd = DB::table('users')
-        ->where('Premium',  'true')
+        ->where('Premium',  'false')
+        ->orwhere('premium',  null)
         ->get(); 
         $Premium = DB::table('users')
-        ->where('premium',  'false')
-        ->orwhere('premium',  null)
+        ->where('premium',  'true')
+     
         ->get();
         $NotBanned = DB::table('users')
         ->where('BanStatus',  'false')

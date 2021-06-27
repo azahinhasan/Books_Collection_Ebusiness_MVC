@@ -47,6 +47,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/emplpyee/updatePassword">Update Password</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">LogOut</a>
+          </li>
          
         </ul>
 </body>

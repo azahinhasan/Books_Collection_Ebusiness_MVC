@@ -24,4 +24,40 @@ class BookZController extends Controller
 
     }
 
+    public function login(){
+
+            return view('Home.loginFrom')->with('msg', '');
+
+    }
+
+    public function loginPost(Request $data){
+        $temp = DB::table('users')
+        // ->where('Email',$data->Email)
+        // ->where('Password',$data->Password)
+        ->where('Email',$data->Email)
+        ->where('Password',$data->Password)
+        ->get();
+
+        if(count($temp)<1){
+            return view('Home.loginFrom')->with('msg', 'Invalid UserName');
+
+        }
+        $data->session()->put('Email', $data->Email);
+        $data->session()->put('Password', $data->Password);
+        $data->session()->put('Rank', $temp[0]->Rank);
+
+        return view('Employee.home')->with('bookList', '');
+
+    }
+
+    public function logOut(Request $req){
+
+        $req->session()->flush();
+
+        return redirect('/login');
+
+    }
+
+    
+
 }

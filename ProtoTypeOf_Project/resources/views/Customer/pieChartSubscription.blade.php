@@ -21,7 +21,7 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['', ''],
-  ['Standard', {{$Standerd}}],
+  ['Standard ', {{$Standerd}}],
   ['Premium',  {{$Premium}}],
 ]);
 

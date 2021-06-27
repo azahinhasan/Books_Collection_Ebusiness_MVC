@@ -10,9 +10,9 @@
 <h3> Create New User</h3>
 
 <p style="color:red;">{{$msg}}</p>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 		@csrf
-	<table class="table">
+	<table class="table"  >
 		<tr>
 			<td>Name</td>
 			<td><input type="text" name="Name"></td>
@@ -29,6 +29,15 @@
 			<td>DOB</td>
 			<td><input type="date" name="DOB"></td>
 		</tr>
+		 <tr>
+			<td>Salary</td>
+			<td><input type="number" min='0' name="Amount"></td>
+		</tr>
+		<tr>
+			<td>Profile Pic</td>
+			<td><input type="file" name="image"></td>
+		</tr>
+		
      <tr>
 			<td>Rank</td>
 			<td>
