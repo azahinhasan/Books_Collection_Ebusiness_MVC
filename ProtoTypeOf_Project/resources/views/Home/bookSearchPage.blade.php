@@ -18,10 +18,10 @@
 
       </form>
       <br/> <br/>
-      <a href="" id='box' class="card">
+      <a id='box' class="card">
          @if($bookList!='')
             @foreach ($bookList as $book)
-            <span  id='DataBox' class="card-body">
+            <a   href="/book/details/{{$book['Id']}}" id='DataBox' class="card-body">
                <table class="table">
                   <tr>
                      <th></th>
@@ -46,7 +46,7 @@
                      <td>{{$book['ShopID']}}</td>
                   </tr>
                </table>
-            </span>
+            </a>
          @endforeach
          @endif
 

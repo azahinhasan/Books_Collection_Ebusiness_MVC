@@ -15,27 +15,27 @@
 	<table class="table"  >
 		<tr>
 			<td>Name</td>
-			<td><input type="text" name="Name"></td>
+			<td><input type="text" name="Name" value="{{old('Name')}}"></td>
 		</tr>
 		<tr>
 			<td>Address</td>
-			<td><input type="text" name="Address"></td>
+			<td><input type="text" name="Address" value="{{old('Address')}}"></td>
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td><input type="text" name="Email"></td>
+			<td><input type="text" name="Email" value="{{old('Email')}}"></td>
 		</tr>
      <tr>
 			<td>DOB</td>
-			<td><input type="date" name="DOB"></td>
+			<td><input type="date" name="DOB" value="{{old('DOB')}}"></td>
 		</tr>
 		 <tr>
 			<td>Salary</td>
-			<td><input type="number" min='0' name="Amount"></td>
+			<td><input name="Amount" type="number" min='0' value="{{old('number')}}"></td>
 		</tr>
 		<tr>
 			<td>Profile Pic</td>
-			<td><input type="file" name="image"></td>
+			<td><input type="file" name="image" value="{{old('image')}}"></td>
 		</tr>
 		
      <tr>
@@ -52,6 +52,18 @@
 			<td><input type="submit" name="create" value="Create"></td>
 		</tr>
 	</table>
+
+
+
+
+
+
+	@foreach ($errors->all() as $error)
+	<li>{{ $error }}</li>
+@endforeach
+
+
+
 	</form>
 </body>
 </html>

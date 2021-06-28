@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class BookZController extends Controller
+class HomeZController extends Controller
 {
     public function bookSearch(Request $data){
 
@@ -39,7 +39,7 @@ class BookZController extends Controller
         ->get();
 
         if(count($temp)<1){
-            return view('Home.loginFrom')->with('msg', 'Invalid UserName');
+            return view('Home.loginFrom')->with('msg', 'Invalid Data!');
 
         }
         $data->session()->put('Email', $data->Email);

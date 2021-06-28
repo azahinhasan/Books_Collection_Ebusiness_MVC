@@ -21,7 +21,7 @@
 			<td><input type="password" name="Password"></td>
 		</tr>
       <tr>
-			<td></td>
+			<td style="color: red;">{{$msg}}</td>
 			<td><input type="submit" name="submit"></td>
 		</tr>
 	</table>

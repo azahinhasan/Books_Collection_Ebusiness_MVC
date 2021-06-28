@@ -21,13 +21,13 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-   //   public function rules()
-   //  {
-   //      return [
-   //          'oPass'=> 'required|min:5',
-   //          'nPass'=> 'required'
-   //      ];
-   //  }
+    //  public function rules()
+    // {
+    //     return [
+    //         'oPass'=> 'required|min:5',
+    //         'nPass'=> 'required'
+    //     ];
+    // }
 
    //  public function messages(){
    //      return [

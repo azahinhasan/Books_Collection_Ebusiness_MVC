@@ -29,7 +29,7 @@ Route::group(['middleware'=>['verifyUser']], function(){
     Route::post('/emplpyee/updatePassword', 'EmployeeController@updatePass');
 
     //Home
-    Route::get('/logout', 'BookZController@logOut');
+    Route::get('/logout', 'HomeZController@logOut');
     
     //Shop
     Route::get('/shop/list', 'CustomerController@shopList');
@@ -71,8 +71,8 @@ Route::group(['middleware'=>['verifyUsrerOnlyAdmin']], function(){
 
 //HOme
 
-Route::post('/bookSearch', 'BookZController@bookSearcWithResults');
-Route::get('/bookSearch', 'BookZController@bookSearch');
+Route::post('/bookSearch', 'HomeZController@bookSearcWithResults');
+Route::get('/bookSearch', 'HomeZController@bookSearch');
 
-Route::get('/login', 'BookZController@login');
-Route::post('/login', 'BookZController@loginPost');
+Route::get('/login', 'HomeZController@login');
+Route::post('/login', 'HomeZController@loginPost');

@@ -20,6 +20,10 @@
             <a class="nav-link" href="/emplpyee/list">List Employee</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/emplpyee/salaryList/">Salary Option</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="/reportList">Report</a>
           </li>
           <li class="nav-item">
@@ -31,9 +35,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/user/subscription/pieChart">Pie Chart</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/emplpyee/salaryList/">Salary Option</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/shop/list">Shop List</a>
           </li>
