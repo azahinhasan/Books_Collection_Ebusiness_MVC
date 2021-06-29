@@ -18,16 +18,13 @@
          </tr>
          <tr>
             <td>New Password: </td>
-            <td><input name="nPass"/> </td>
+            <td><input type="text" name="nPass"/> </td>
          </tr>
          <tr>
             <td> </td>
 
             <td>
                <p>{{$msg}}</p>
-               @foreach ($errors->all() as $error)
-		            {{$error}} <br>
-	            @endforeach
                <input type="submit" value="SUBMIT"/> 
             </td>
          </tr>

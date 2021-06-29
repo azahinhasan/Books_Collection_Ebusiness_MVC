@@ -39,9 +39,27 @@ class HomeZController extends Controller
         ->get();
 
         if(count($temp)<1){
+
             return view('Home.loginFrom')->with('msg', 'Invalid Data!');
 
         }
+
+        // $temp2 = DB::table('users')
+        // ->where('Email',$data->Email)
+        // ->where('BanStatus','false')
+        // ->orwhere('BanStatus','')
+        // ->get();
+
+        // if(count($temp2)<1){
+
+        //     return view('Home.loginFrom')->with('msg', 'Account Is Disabled!');
+
+        // }
+
+
+
+
+
         $data->session()->put('Email', $data->Email);
         $data->session()->put('Password', $data->Password);
         $data->session()->put('Rank', $temp[0]->Rank);

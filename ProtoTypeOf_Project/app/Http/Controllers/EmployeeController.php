@@ -50,19 +50,22 @@ class EmployeeController extends Controller
                         return view('Employee.regEmployee')->with('print',false)->with('msg','Have To Upload Valid Image!');
                 }
 
+                $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $pin = mt_rand(1000000, 9999999)
+                        . mt_rand(1000000, 9999999)
+                        . $characters[rand(0, strlen($characters) - 1)];
+                        // shuffle the result
+                $string = str_shuffle($pin);
              
                $data= DB::table('users')->insert(
                         ['Email' => $req->Email,
                         'Address' => $req->Address,
                         'Name' => $req->Name,
                         'DOB' => $req->DOB,
-                        'Password' => 'p',
+                        'Password' => $string,
                         'ProPic' =>  $ProPicNmae,
                         'Rank' => $req->Rank]);
 
-                
-                
-         
                 if( $data== true){
                         $temp = DB::table('users')
                         ->where('Email', $req->Email )
@@ -217,8 +220,12 @@ class EmployeeController extends Controller
 
         public function updatePass(Request $r){
                 $msg='';
-                //$email = $r->session()->get('Email');
-                $email = 'a@a.com';
+
+                if($r->nPass=='' || $r->oPass==''){
+                        return view('Employee.updatePassword')->with('msg', 'Fill Up All TextBox');
+                }
+                $email = $r->session()->get('Email');
+                //$email = 'a@a.com';
                 $data = DB::table('users')
                 ->where('Email',  $email)
                 ->where('Password',  $r->oPass)
