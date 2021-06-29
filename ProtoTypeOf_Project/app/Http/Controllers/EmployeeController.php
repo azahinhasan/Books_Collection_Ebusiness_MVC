@@ -64,6 +64,7 @@ class EmployeeController extends Controller
                         'DOB' => $req->DOB,
                         'Password' => $string,
                         'ProPic' =>  $ProPicNmae,
+                        'BanStatus' =>  false,
                         'Rank' => $req->Rank]);
 
                 if( $data== true){
@@ -98,7 +99,7 @@ class EmployeeController extends Controller
         public function createSucessPrint($id){
 
                 $temp = DB::table('users')
-                ->where('ID',1)
+                ->where('ID',$id)
                 ->get();
                 $result = json_decode($temp, true);
 
@@ -237,8 +238,8 @@ class EmployeeController extends Controller
                 DB::table('users')
                         ->where('Email', $email)
                         ->update(['Password' => $r->nPass]);
-                        
-                        return view('Employee.updatePassword')->with('msg', 'Password Updated!');
+                        return view('Home.loginFrom')->with('msg', 'Pass Updated.Login Again.');
+                        //return view('Employee.updatePassword')->with('msg', 'Password Updated!');
                 }
 
                 return view('Employee.updatePassword')->with('msg', 'Old Password is Wrong!');

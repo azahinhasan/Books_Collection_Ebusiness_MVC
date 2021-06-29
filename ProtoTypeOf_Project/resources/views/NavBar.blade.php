@@ -39,9 +39,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/shop/list">Shop List</a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="/bookSearch/">Book Search</a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="  /user/economic/2020">Earning Data</a>
           </li>

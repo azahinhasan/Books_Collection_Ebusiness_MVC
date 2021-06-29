@@ -7,7 +7,8 @@
 </head>
 <body>
 
-      @include('..NavBar')
+     {{-- // @include('..NavBar') --}}
+      @include('..NavBar2')
       <h3> Report List </h3>
 
 

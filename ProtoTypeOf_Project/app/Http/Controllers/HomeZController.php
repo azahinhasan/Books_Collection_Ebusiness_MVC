@@ -44,19 +44,17 @@ class HomeZController extends Controller
 
         }
 
-        // $temp2 = DB::table('users')
-        // ->where('Email',$data->Email)
-        // ->where('BanStatus','false')
+        $temp2 = DB::table('users')
+        ->where('Email',$data->Email)
+        ->where('BanStatus','true')
         // ->orwhere('BanStatus','')
-        // ->get();
+        ->get();
 
-        // if(count($temp2)<1){
+        if(count($temp2)>0){
 
-        //     return view('Home.loginFrom')->with('msg', 'Account Is Disabled!');
+            return view('Home.loginFrom')->with('msg', 'Account Is Disabled!');
 
-        // }
-
-
+        }
 
 
 
@@ -73,6 +71,7 @@ class HomeZController extends Controller
         $req->session()->flush();
 
         return redirect('/login');
+        
 
     }
 
