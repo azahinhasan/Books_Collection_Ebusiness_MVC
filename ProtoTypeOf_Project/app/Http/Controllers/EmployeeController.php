@@ -19,10 +19,6 @@ class EmployeeController extends Controller
 
                $ProPicNmae ='';
 
-
-                if($req->Email == ''||$req->Address == ''||$req->Name == ''||$req->Amount == ''){
-                        return view('Employee.regEmployee')->with('print',false)->with('msg','Please Fill All Text box');
-                }
                 
                 $temp = DB::table('users')
                 ->where('Email', $req->Email )
@@ -45,9 +41,12 @@ class EmployeeController extends Controller
                         $ProPicNmae=$file->getClientOriginalName();
                         $file->move('upload',$file->getClientOriginalName());
 
-                       
                 }else{
                         return view('Employee.regEmployee')->with('print',false)->with('msg','Have To Upload Valid Image!');
+                }
+
+                if($req->Email == ''||$req->Address == ''||$req->Name == ''||$req->Amount == ''){
+                        return view('Employee.regEmployee')->with('print',false)->with('msg','Please Fill All Text box');
                 }
 
                 $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -57,7 +56,7 @@ class EmployeeController extends Controller
                         // shuffle the result
                 $string = str_shuffle($pin);
              
-               $data= DB::table('users')->insert(
+                $data= DB::table('users')->insert(
                         ['Email' => $req->Email,
                         'Address' => $req->Address,
                         'Name' => $req->Name,

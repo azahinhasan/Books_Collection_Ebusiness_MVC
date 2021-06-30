@@ -76,3 +76,7 @@ Route::get('/bookSearch', 'HomeZController@bookSearch');
 
 Route::get('/login', 'HomeZController@login');
 Route::post('/login', 'HomeZController@loginPost');
+
+
+Route::get('/contactus', 'HomeZController@contactus');
+Route::post('/contactus', 'HomeZController@contactusPost');

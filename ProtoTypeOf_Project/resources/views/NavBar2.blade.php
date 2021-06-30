@@ -13,6 +13,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/bookSearch">Book Search</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactus">Contact Us</a>
+          </li>
         </ul>
 </body>
 </html>

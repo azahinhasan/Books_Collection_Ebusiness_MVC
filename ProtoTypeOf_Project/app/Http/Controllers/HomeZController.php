@@ -19,7 +19,6 @@ class HomeZController extends Controller
         ->get();
         $result = json_decode($temp, true);
 
-
         return view('Home.bookSearchPage')->with('bookList', $result);
 
     }
@@ -73,6 +72,22 @@ class HomeZController extends Controller
         return redirect('/login');
         
 
+    }
+
+    //contactusPost
+
+    public function contactus(Request $req){
+        return view('Home.contactUs')->with('msg','');
+    }
+
+    public function contactusPost(Request $req){
+
+        DB::table('contact_us')->insert(
+            ['Name' => $req->Name,
+            'Email' => $req->Email,
+            'Msg'=>$req->Msg]);
+
+            return view('Home.contactUs')->with('msg','Your Massage Send!');
     }
 
     

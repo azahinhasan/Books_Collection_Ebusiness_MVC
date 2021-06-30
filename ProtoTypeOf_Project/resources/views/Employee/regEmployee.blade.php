@@ -15,15 +15,15 @@
 	<table class="table"  >
 		<tr>
 			<td>Name</td>
-			<td><input type="text" name="Name" value="{{old('Name')}}"></td>
+			<td><input type="text" name="Name" value="{{old('Name')}}" ></td>
 		</tr>
 		<tr>
 			<td>Address</td>
-			<td><input type="text" name="Address" value="{{old('Address')}}"></td>
+			<td><input type="text" name="Address" value="{{old('Address')}}" ></td>
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td><input type="text" name="Email" value="{{old('Email')}}"></td>
+			<td><input type="text" name="Email" value="{{old('Email')}}" ></td>
 		</tr>
      <tr>
 			<td>DOB</td>
